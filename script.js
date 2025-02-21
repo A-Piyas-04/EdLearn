@@ -34,3 +34,32 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", animateOnScroll);
     animateOnScroll(); // Trigger on load in case elements are already in view
 });
+
+
+// Mobile Navigation Toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+});
+
+
+// Scroll Animations
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollElements = document.querySelectorAll(".scroll-animation");
+
+  const scrollHandler = () => {
+    scrollElements.forEach((el) => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+        el.classList.add("visible");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", scrollHandler);
+  scrollHandler(); // Run initially
+});
+

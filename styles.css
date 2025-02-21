@@ -1,3 +1,103 @@
+/* global variable definitions */
+:root {
+  --primary-color: #3A5BA0;     /* Indigo blue */
+  --secondary-color: #00B8D4;   /* Cyan */
+  --accent-color: #c7a130;      /* Amber for accents or hover effects */
+  --background-color: #F0F4F8;  /* Soft light blue-gray */
+  --text-color: #2C3E50;        /* Dark blue-gray for readability */
+  --white: #FFFFFF;             /* Pure white */
+  --card-shadow: rgba(179, 155, 155, 0.282); /* Subtle shadow for cards */
+}
+
+
+
+/* for navigation -------------------------> */
+
+
+
+/* Responsive Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(15, 75, 112);
+  padding: 1rem 2rem;
+  color: var(--white);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--secondary-color);
+}
+
+/* Mobile Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  background: var(--white);
+  height: 3px;
+  width: 25px;
+  margin: 4px;
+  transition: 0.3s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: var(--primary-color);
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+
+
+
+
+/* for navigation -------------------------> */
+
 /* General Reset */
 * {
   margin: 0;
@@ -12,29 +112,18 @@ body {
   background-color: var(--background-color);
 }
 
-/* Updated Colors */
-:root {
-  --primary-color: #3A5BA0; /* Indigo blue */
-  --secondary-color: #00B8D4; /* Cyan */
-  --background-color: #F0F4F8; /* Soft light blue-gray */
-  --text-color: #2C3E50; /* Dark blue-gray for readability */
-  --white: #FFFFFF; /* Pure white */
-  --card-shadow: rgba(58, 91, 160, 0.1); /* Subtle shadow for cards */
-}
-
-/* Parallax Header */
+/* Improved Parallax Effect */
 .parallax-header {
   position: relative;
-  height: 60vh; /* Balanced height */
-  background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your image URL */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Subtle parallax effect */
+  height: 70vh;
+  background: url('https://source.unsplash.com/1600x900/?education,learning') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--white);
+  background-attachment: fixed;
+  animation: fadeIn 2s ease-in-out;
 }
 
 .parallax-header .overlay {
@@ -46,7 +135,7 @@ body {
   background: linear-gradient(
     to bottom,
     rgba(58, 91, 160, 0.85), /* Indigo blue */
-    rgba(0, 184, 212, 0.85)  /* Cyan */
+    rgba(0, 77, 124, 0.85)  /* Cyan */
   );
   display: flex;
   flex-direction: column;
@@ -56,18 +145,17 @@ body {
 }
 
 .parallax-header h1 {
-  font-size: 2.8rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: var(--white);
-  text-shadow: 1px 1px 4px rgb(117, 4, 4);
-}
-
-.parallax-header p {
-  font-size: 1.3rem;
-  font-weight: 300;
-  color: var(--white);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  background-image: url(https://static.wixstatic.com/media/21ee65_87715916a7d4418a96c69d7be10d05fb~mv2.png/v1/fill/w_980,h_551,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/home%20bg.png); /* Replace with your image path */
+  background-size: cover; /* Makes the image cover the entire section */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items:center; /* Centers text vertically */
+  justify-content: center; /* Centers text horizontally */
+  text-align: center; /* Centers text */
+  color: white; /* Ensures text is visible */
+  padding: 100px 205px; /* Adds some spacing */
 }
 
 .highlight {
@@ -163,11 +251,7 @@ footer .highlight {
   color: var(--secondary-color);
 }
 
-
-
-/* for script ----------------------------->  */
-
-/* Course Card Styles */
+/* Additional Styles for Course Cards (Script Driven) */
 .course-container {
   display: flex;
   flex-wrap: wrap;
@@ -177,7 +261,7 @@ footer .highlight {
 }
 
 .course-card {
-  background: white;
+  background: var(--white);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -189,21 +273,12 @@ footer .highlight {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Visible state when scrolled into view */
 .course-card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Highlight Text */
-.highlight {
-  color: #007bff;
-}
-
-
-
-/* features animations -------------------------------> */
-/* Feature Section Styling */
+/* Feature Animations */
 .feature-container {
   display: flex;
   flex-wrap: wrap;
@@ -213,7 +288,7 @@ footer .highlight {
 }
 
 .feature-box {
-  background: white;
+  background: var(--white);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
@@ -224,13 +299,12 @@ footer .highlight {
   transition: opacity 1s ease-out, transform 0.8s ease-out;
 }
 
-/* Animations on scroll */
 .feature-box.visible {
   opacity: 1;
   transform: scale(1);
 }
 
-/* Different Animation Variations */
+/* Animation Variations */
 #interactive.visible {
   animation: fadeInLeft 1s ease-out;
 }
@@ -245,50 +319,54 @@ footer .highlight {
 }
 
 /* Keyframe Animations */
-@keyframes fadeInLeft {
+/* Scroll Animation */
+@keyframes fadeIn {
   from {
-      transform: translateX(-50px);
-      opacity: 0;
+    opacity: 0;
+    transform: translateY(-30px);
   }
   to {
-      transform: translateX(0);
-      opacity: 1;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes fadeInRight {
-  from {
-      transform: translateX(50px);
-      opacity: 0;
-  }
-  to {
-      transform: translateX(0);
-      opacity: 1;
-  }
+/* Animated Scrolling Effect */
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-@keyframes bounceIn {
-  0% {
-      transform: scale(0.8);
-      opacity: 0;
-  }
-  50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-  }
-  100% {
-      transform: scale(1);
-      opacity: 1;
-  }
+.scroll-animation.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@keyframes zoomIn {
-  from {
-      transform: scale(0.5);
-      opacity: 0;
-  }
-  to {
-      transform: scale(1);
-      opacity: 1;
-  }
+
+
+
+/* image styling --------------------> */
+/* Feature Images */
+.feature-images {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.image-container img {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
 }
