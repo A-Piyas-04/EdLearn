@@ -1,0 +1,294 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Updated Colors */
+:root {
+  --primary-color: #3A5BA0; /* Indigo blue */
+  --secondary-color: #00B8D4; /* Cyan */
+  --background-color: #F0F4F8; /* Soft light blue-gray */
+  --text-color: #2C3E50; /* Dark blue-gray for readability */
+  --white: #FFFFFF; /* Pure white */
+  --card-shadow: rgba(58, 91, 160, 0.1); /* Subtle shadow for cards */
+}
+
+/* Parallax Header */
+.parallax-header {
+  position: relative;
+  height: 60vh; /* Balanced height */
+  background-image: url('https://via.placeholder.com/1920x1080'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Subtle parallax effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+}
+
+.parallax-header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(58, 91, 160, 0.85), /* Indigo blue */
+    rgba(0, 184, 212, 0.85)  /* Cyan */
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.parallax-header h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+  text-shadow: 1px 1px 4px rgb(117, 4, 4);
+}
+
+.parallax-header p {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--white);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.highlight {
+  color: var(--secondary-color);
+}
+
+/* Main Content */
+main {
+  padding: 2rem;
+}
+
+.content {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+}
+
+.content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--secondary-color);
+}
+
+.content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* Feature Cards */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--card-shadow);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  padding: 1.5rem;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(58, 91, 160, 0.2);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+footer .highlight {
+  color: var(--secondary-color);
+}
+
+
+
+/* for script ----------------------------->  */
+
+/* Course Card Styles */
+.course-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.course-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 250px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Visible state when scrolled into view */
+.course-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Highlight Text */
+.highlight {
+  color: #007bff;
+}
+
+
+
+/* features animations -------------------------------> */
+/* Feature Section Styling */
+.feature-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3rem 0;
+}
+
+.feature-box {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 280px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1s ease-out, transform 0.8s ease-out;
+}
+
+/* Animations on scroll */
+.feature-box.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Different Animation Variations */
+#interactive.visible {
+  animation: fadeInLeft 1s ease-out;
+}
+#expert.visible {
+  animation: fadeInRight 1s ease-out;
+}
+#flexible.visible {
+  animation: bounceIn 1s ease-out;
+}
+#community.visible {
+  animation: zoomIn 1s ease-out;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInLeft {
+  from {
+      transform: translateX(-50px);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+      transform: translateX(50px);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+      transform: scale(0.5);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
