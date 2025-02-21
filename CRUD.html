@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduLearn - Course Management</title>
+  <!-- Link your CSS file if needed -->
+  <link rel="stylesheet" href="CRUDstyles.css">
+</head>
+<body>
+  <header>
+    <h1>EduLearn Course Management</h1>
+  </header>
+
+  <!-- Container for course list -->
+  <section id="courseSection">
+    <div id="courseList"></div>
+  </section>
+
+  <!-- Optional: A simple form to add courses -->
+  <section id="addCourseSection">
+    <h2>Add a New Course</h2>
+    <form id="addCourseForm">
+      <input type="text" id="courseTitle" placeholder="Course Title" required>
+      <input type="text" id="courseDesc" placeholder="Course Description" required>
+      <button type="submit">Add Course</button>
+    </form>
+  </section>
+
+  <!-- Link the JavaScript file -->
+  <script src="courseCRUD.js"></script>
+</body>
+</html>
