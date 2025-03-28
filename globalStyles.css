@@ -1,10 +1,12 @@
 /* globalStyles.css */
 :root {
-    --primary-color: #3A5BA0;     /* Indigo blue for headers and main backgrounds */
+    --primary-color: #2A4070;     /* Darker indigo blue for headers and main backgrounds */
     --secondary-color: #00B8D4;   /* Cyan for highlights and buttons */
     --accent-color: #FFC107;      /* Amber for hover effects and accents */
-    --background-color: #F0F4F8;  /* Light blue-gray for general page backgrounds */
-    --text-color: #2C3E50;        /* Dark blue-gray for primary text */
+    --background-color: #121212;  /* Dark background for main content */
+    --text-color: #E0E0E0;        /* Light gray for primary text */
     --white: #FFFFFF;             /* White for contrast */
+    --card-background: #1E1E1E;   /* Slightly lighter dark for cards */
+    --hover-color: #2C2C2C;       /* Hover state for dark elements */
   }
   
