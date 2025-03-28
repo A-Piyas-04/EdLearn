@@ -3,10 +3,14 @@
   --primary-color: #3A5BA0;     /* Indigo blue */
   --secondary-color: #00B8D4;   /* Cyan */
   --accent-color: #c7a130;      /* Amber for accents or hover effects */
-  --background-color: #F0F4F8;  /* Soft light blue-gray */
-  --text-color: #2C3E50;        /* Dark blue-gray for readability */
+  --background-color: #0a0b1e;  /* Dark background for cyberpunk feel */
+  --text-color: #e0e4ec;        /* Light text for dark background */
   --white: #FFFFFF;             /* Pure white */
-  --card-shadow: rgba(179, 155, 155, 0.282); /* Subtle shadow for cards */
+  --card-shadow: rgba(0, 184, 212, 0.3); /* Neon glow effect */
+  --neon-glow: 0 0 10px var(--secondary-color),
+               0 0 20px var(--secondary-color),
+               0 0 30px var(--secondary-color);
+  --card-border: 1px solid rgba(0, 184, 212, 0.2);
 }
 
 
@@ -20,18 +24,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgb(15, 75, 112);
+  background: rgba(15, 75, 112, 0.8);
   padding: 1rem 2rem;
   color: var(--white);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 184, 212, 0.3);
+  box-shadow: 0 2px 20px rgba(0, 184, 212, 0.2);
 }
 
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: bold;
+  text-shadow: var(--neon-glow);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.navbar .logo:hover {
+  transform: translateZ(20px) rotateX(10deg);
 }
 
 .nav-links {
@@ -47,11 +61,32 @@
   text-decoration: none;
   color: var(--white);
   font-size: 1.1rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 5px 10px;
 }
 
 .nav-links a:hover {
   color: var(--secondary-color);
+  text-shadow: var(--neon-glow);
+  transform: translateY(-2px);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--secondary-color);
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  box-shadow: var(--neon-glow);
 }
 
 /* Mobile Menu */
@@ -124,6 +159,8 @@ body {
   color: var(--white);
   background-attachment: fixed;
   animation: fadeIn 2s ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .parallax-header .overlay {
@@ -173,11 +210,14 @@ main {
 }
 
 .content h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--white);
   position: relative;
   display: inline-block;
+  text-shadow: var(--neon-glow);
+  letter-spacing: 2px;
+  animation: neonPulse 2s infinite;
 }
 
 .content h2::after {
@@ -213,19 +253,23 @@ main {
 }
 
 .card {
-  background: var(--white);
-  border: 1px solid var(--card-shadow);
+  background: rgba(255, 255, 255, 0.05);
+  border: var(--card-border);
   border-radius: 12px;
   box-shadow: 0 4px 10px var(--card-shadow);
   padding: 1.5rem;
   width: 250px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  backdrop-filter: blur(5px);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(58, 91, 160, 0.2);
+  transform: translateY(-10px) rotateX(10deg);
+  box-shadow: var(--neon-glow);
+  border-color: var(--secondary-color);
 }
 
 .card h3 {
@@ -288,20 +332,31 @@ footer .highlight {
 }
 
 .feature-box {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border: var(--card-border);
+  box-shadow: 0 4px 10px var(--card-shadow);
   padding: 2rem;
   width: 280px;
   text-align: center;
   opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 1s ease-out, transform 0.8s ease-out;
+  transform: scale(0.8) translateZ(0);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  backdrop-filter: blur(5px);
+  animation: floatAnimation 6s ease-in-out infinite;
 }
 
 .feature-box.visible {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) translateZ(20px);
+}
+
+.feature-box:hover {
+  transform: scale(1.05) translateZ(50px) rotateX(10deg);
+  box-shadow: var(--neon-glow);
+  border-color: var(--secondary-color);
 }
 
 /* Animation Variations */
@@ -319,15 +374,26 @@ footer .highlight {
 }
 
 /* Keyframe Animations */
-/* Scroll Animation */
+@keyframes neonPulse {
+  0% { text-shadow: var(--neon-glow); }
+  50% { text-shadow: none; }
+  100% { text-shadow: var(--neon-glow); }
+}
+
+@keyframes floatAnimation {
+  0% { transform: translateY(0) rotateX(0); }
+  50% { transform: translateY(-10px) rotateX(5deg); }
+  100% { transform: translateY(0) rotateX(0); }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-30px) rotateX(-20deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) rotateX(0);
   }
 }
 
@@ -362,11 +428,16 @@ footer .highlight {
 
 .image-container img {
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: var(--card-border);
+  box-shadow: 0 4px 8px var(--card-shadow);
   width: 300px;
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .image-container img:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateZ(30px) rotateX(5deg);
+  box-shadow: var(--neon-glow);
+  border-color: var(--secondary-color);
 }
