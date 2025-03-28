@@ -1,16 +1,17 @@
 /* global variable definitions */
 :root {
-  --primary-color: #3A5BA0;     /* Indigo blue */
+  --primary-color: #2A4070;     /* Darker indigo blue */
   --secondary-color: #00B8D4;   /* Cyan */
   --accent-color: #c7a130;      /* Amber for accents or hover effects */
-  --background-color: #0a0b1e;  /* Dark background for cyberpunk feel */
-  --text-color: #e0e4ec;        /* Light text for dark background */
+  --background-color: #121212;  /* Dark background */
+  --text-color: #E0E0E0;        /* Light text for dark background */
   --white: #FFFFFF;             /* Pure white */
-  --card-shadow: rgba(0, 184, 212, 0.3); /* Neon glow effect */
-  --neon-glow: 0 0 10px var(--secondary-color),
-               0 0 20px var(--secondary-color),
-               0 0 30px var(--secondary-color);
-  --card-border: 1px solid rgba(0, 184, 212, 0.2);
+  --card-background: #1E1E1E;   /* Card background */
+  --hover-color: #2C2C2C;       /* Hover state */
+  --card-shadow: rgba(0, 184, 212, 0.2); /* Subtle glow effect */
+  --neon-glow: 0 0 8px var(--secondary-color),
+              0 0 15px var(--secondary-color);
+  --card-border: 1px solid rgba(0, 184, 212, 0.15);
 }
 
 
@@ -24,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(15, 75, 112, 0.8);
+  background: rgba(18, 18, 18, 0.9);
   padding: 1rem 2rem;
   color: var(--white);
   position: fixed;
@@ -32,8 +33,8 @@
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 184, 212, 0.3);
-  box-shadow: 0 2px 20px rgba(0, 184, 212, 0.2);
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: 0 2px 15px rgba(0, 184, 212, 0.15);
 }
 
 .navbar .logo {
@@ -171,8 +172,8 @@ body {
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(58, 91, 160, 0.85), /* Indigo blue */
-    rgba(0, 77, 124, 0.85)  /* Cyan */
+    rgba(18, 18, 18, 0.9),
+    rgba(30, 30, 30, 0.9)
   );
   display: flex;
   flex-direction: column;
