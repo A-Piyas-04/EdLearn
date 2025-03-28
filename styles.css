@@ -183,17 +183,15 @@ body {
 }
 
 .parallax-header h1 {
-  background-image: url(https://static.wixstatic.com/media/21ee65_87715916a7d4418a96c69d7be10d05fb~mv2.png/v1/fill/w_980,h_551,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/home%20bg.png); /* Replace with your image path */
-  background-size: cover; /* Makes the image cover the entire section */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents tiling */
-  height: 100vh; /* Full viewport height */
-  display: flex;
-  align-items:center; /* Centers text vertically */
-  justify-content: center; /* Centers text horizontally */
-  text-align: center; /* Centers text */
-  color: white; /* Ensures text is visible */
-  padding: 100px 205px; /* Adds some spacing */
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  text-shadow: var(--neon-glow);
+  padding: 0;
+  width: 100%;
 }
 
 .highlight {
